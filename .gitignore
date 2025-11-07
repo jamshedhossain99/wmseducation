@@ -3,3 +3,4 @@
 /dynamic
 /dynamic/*
 .DS_Store
+.git-credentials
