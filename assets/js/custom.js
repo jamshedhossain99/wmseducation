@@ -30,4 +30,38 @@ $(document).on('click', '.go-to-contact', function(e){
         $('#contact-form [name="name"]').trigger('focus');
 
     }, 100)
-})
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const toggler = document.querySelector('.navbar-toggler');
+    const icon = toggler.querySelector('.fa');
+    const collapseEl = document.getElementById('navigation');
+    const bsCollapse = new bootstrap.Collapse(collapseEl, { toggle: false });
+
+    // Toggle icon on show/hide
+    collapseEl.addEventListener('show.bs.collapse', () => {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    });
+
+    collapseEl.addEventListener('hide.bs.collapse', () => {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    });
+
+    // Collapse logic for outside click and nav link
+    document.addEventListener('click', function (event) {
+        const nav = document.getElementById('main-nav');
+        const menubar = document.getElementById('main-menubar');
+        const instance = bootstrap.Collapse.getInstance(collapseEl);
+
+        if (!nav.contains(event.target)) {
+            instance.hide();
+        }
+
+        if (menubar.contains(event.target) && event.target.classList.contains('nav-link')) {
+            instance.hide();
+        }
+    });
+});
+

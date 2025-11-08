@@ -254,6 +254,9 @@ a {
   padding-left: 30px;
   padding-right: 0px;
 }
+#main-nav .navbar-nav .nav-link.active:not(.home-link){
+    color: #f57479 !important;
+}
 
 .navbar-brand {
   font-size: 40px;
